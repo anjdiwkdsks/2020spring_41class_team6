@@ -39,11 +39,17 @@ public class SurveyActivity extends AppCompatActivity {
         Intent intent = getIntent();
         SharedPreferences loginPref;
         loginPref = getSharedPreferences("user_SP", this.MODE_PRIVATE);
-        String temp=loginPref.getString("UID",null);
-        //String temp =getIntent().getStringExtra("UID");
-        Log.d("sakfjlaskf",""+ temp);
         Button button_next =findViewById(R.id.taste_next_btn);
         radioGroup = findViewById(R.id.radio_group);
+
+
+        String temp=loginPref.getString("UID",null);
+        if (temp == null) temp = getIntent().getStringExtra("UID");
+        if (temp == null) {
+            Toast.makeText(this, "Wrong UID found. Re-login or Re-sign-up!", Toast.LENGTH_LONG).show();
+            finish();
+        }
+        Log.d("sakfjlaskf",""+ temp);
 
         /* 죄송합니다....8ㅅ8
         DisplayMetrics dm = new DisplayMetrics();
@@ -60,19 +66,20 @@ public class SurveyActivity extends AppCompatActivity {
                 checked = radioGroup.indexOfChild(findViewById(checkedId));
             }
         });
+        String finalTemp = temp;
         button_next.setOnClickListener((v) -> {
             int radioId = radioGroup.getCheckedRadioButtonId();
             radioButton=findViewById(radioId);
             if(checked==0){
-               UID=temp;
+               UID= finalTemp;
                 startSurvey();
             }
             if(checked==1){
-               UID=temp;
+               UID= finalTemp;
                 startSurvey2();
             }
             if(checked==2){
-              UID=temp;
+              UID= finalTemp;
                 startSurvey3();
             }
         });
