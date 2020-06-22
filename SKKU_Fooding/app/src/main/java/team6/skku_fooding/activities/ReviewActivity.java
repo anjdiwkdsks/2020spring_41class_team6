@@ -194,7 +194,7 @@ public class ReviewActivity extends AppCompatActivity {
                                 rid = ar.size() + 1;
                             }
 
-                            String now = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.KOREA).format(new Date());
+                            String now = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(new Date());
                             Review r = new Review(
                                     rid,
                                     ReviewActivity.this.uid,
