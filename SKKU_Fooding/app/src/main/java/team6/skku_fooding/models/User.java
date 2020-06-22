@@ -15,6 +15,7 @@ public class User {
     public String shopping_cart;
     public int category_id;
     public String filter;
+    public double criteria;
 
     public User() {}
 
@@ -24,6 +25,7 @@ public class User {
         this.nickname=nickname;
         this.UID=UID;
         this.shopping_cart= "@"; // initial value : discuss with Algi
+        this.criteria=3.5;  // Default criteria value
         // category_id, filter_list는 SurveyActivity에서 child 추가
     }
 
@@ -34,6 +36,7 @@ public class User {
         result.put("nickname", nickname);
         result.put("UID", UID);
         result.put("shopping_cart", shopping_cart);
+        result.put("criteria",criteria);
         return result;
     }
 
